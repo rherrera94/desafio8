@@ -15,8 +15,12 @@ app.post('/api/productos/guardar',async (req,res)=>{
         if (!req.body.title || !req.body.price || !req.body.thumbnail){
             throw new Error ("debe rellenar todos los datos solicitados")
         }
-        await listado.guardar({"title":req.body.title,"price":req.body.price,"thumbnail":req.body.thumbnail})
-        res.json({"title":req.body.title,"price":req.body.price,"thumbnail":req.body.thumbnail});
+        let guardo=await listado.guardar({"title":req.body.title,"price":req.body.price,"thumbnail":req.body.thumbnail})
+        console.log(guardo);
+        if (typeof guardo==='string'){
+            throw new Error(guardo);
+        }
+        res.json(guardo);
     }catch(e){
         res.json({"error":e.message});
     }

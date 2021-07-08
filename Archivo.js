@@ -39,8 +39,9 @@ class Archivo{
         try {    
             // necesito usar stringify para poder pasar el json a string y meterlo en el archivo
             await this.fs.promises.writeFile(this.nombreArchivo,JSON.stringify(contenido)); //segun filmina 39
+            return producto;
         } catch (e) {
-            console.error("Se ha producido un error al intentar guardar el contenido del archivo");
+            return ("Se ha producido un error al intentar guardar el contenido del archivo");
         }
     }     
     async borrar() {
