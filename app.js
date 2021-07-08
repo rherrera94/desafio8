@@ -16,7 +16,6 @@ app.post('/api/productos/guardar',async (req,res)=>{
             throw new Error ("debe rellenar todos los datos solicitados")
         }
         let guardo=await listado.guardar({"title":req.body.title,"price":req.body.price,"thumbnail":req.body.thumbnail})
-        console.log(guardo);
         if (typeof guardo==='string'){
             throw new Error(guardo);
         }
